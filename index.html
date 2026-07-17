@@ -294,9 +294,9 @@
         <p>Tell us your business name and where to reach you — we'll handle the rest.</p>
       </div>
       <div style="flex:1; min-width:280px;">
-        <form class="audit-form" onsubmit="event.preventDefault(); document.getElementById('confirm').style.display='block'; this.reset();">
-          <input type="text" placeholder="Business name" required>
-          <input type="email" placeholder="Email address" required>
+        <form class="audit-form" action="https://formspree.io/f/mnjepjpo" method="POST" onsubmit="handleAuditSubmit(event)">
+          <input type="text" name="business_name" placeholder="Business name" required>
+          <input type="email" name="email" placeholder="Email address" required>
           <button type="submit">Request Audit</button>
         </form>
         <div class="confirm" id="confirm">Got it — we'll follow up shortly.</div>
@@ -325,6 +325,28 @@
   </div>
   <div class="wrap bottom">© 2026 Vicinal. All rights reserved.</div>
 </footer>
+
+<script>
+function handleAuditSubmit(event) {
+  event.preventDefault();
+  var form = event.target;
+  var data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(response) {
+    if (response.ok) {
+      document.getElementById('confirm').style.display = 'block';
+      form.reset();
+    } else {
+      alert('Something went wrong submitting your request. Please try again.');
+    }
+  }).catch(function() {
+    alert('Something went wrong submitting your request. Please try again.');
+  });
+}
+</script>
 
 </body>
 </html>
