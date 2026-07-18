@@ -173,7 +173,7 @@
   form.audit-form{display:flex; gap:10px; flex-wrap:wrap;}
   form.audit-form input{
     font-family:'IBM Plex Mono', monospace; font-size:14px;
-    padding:14px 16px; border:1.5px solid var(--ink); border-radius:2px; background:var(--stone); min-width:220px; flex:1;
+    padding:14px 16px; border:1.5px solid var(--ink); border-radius:2px; background:var(--stone); min-width:160px; flex:1;
   }
   form.audit-form button{
     font-family:'IBM Plex Mono', monospace; font-size:14px; text-transform:uppercase; letter-spacing:0.06em;
@@ -297,6 +297,7 @@
         <form class="audit-form" action="https://formspree.io/f/mnjepjpo" method="POST" onsubmit="handleAuditSubmit(event)">
           <input type="text" name="business_name" placeholder="Business name" required>
           <input type="email" name="email" placeholder="Email address" required>
+          <input type="text" name="city" placeholder="City" required>
           <button type="submit">Request Audit</button>
         </form>
         <div class="confirm" id="confirm">Got it, we'll follow up shortly.</div>
